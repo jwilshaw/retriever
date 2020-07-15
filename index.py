@@ -19,7 +19,8 @@ body = html.Div([
         dbc.Col(html.Div(html.Img(src="/assets/logo.png")), lg=2, md=2, xs=2)
     ], className="banner"),
     dbc.Row([
-        dbc.Col(html.Div(html.P("Map goes here")), lg=8, md=8, xs=12, className="map"),
+        dbc.Col(html.Div(html.Iframe(id="map_html", srcDoc=open("./assets/tester_manchester.html", 'r').read())),
+                lg=8, md=12, xs=12, className="map"),
         dbc.Col([
             html.Div([
                 dbc.Row(dbc.Col([
@@ -27,27 +28,23 @@ body = html.Div([
                         dbc.Row(html.Div(html.H2("Hospital"))),
                         dbc.Row(html.Div(html.P("Practice text")), className="pbody")], className="practice"), no_gutters=True),
                     dbc.Row(dbc.Container([
-                        dbc.Row(html.Div(html.H2("Hospital"))),
+                        dbc.Row(html.Div(html.H2("Branch 1"))),
                         dbc.Row(html.Div(html.P("Practice text")), className="pbody")], className="practice"), no_gutters=True),
                     dbc.Row(dbc.Container([
-                        dbc.Row(html.Div(html.H2("Hospital"))),
+                        dbc.Row(html.Div(html.H2("Branch 2"))),
                         dbc.Row(html.Div(html.P("Practice text")), className="pbody")], className="practice"), no_gutters=True),
                     dbc.Row(dbc.Container([
-                        dbc.Row(html.Div(html.H2("Hospital"))),
+                        dbc.Row(html.Div(html.H2("Branch 3"))),
                         dbc.Row(html.Div(html.P("Practice text")), className="pbody")], className="practice"), no_gutters=True)
                 ]), className="practice_col"),
                 dbc.Row(dbc.Col([
                     dbc.Row(html.Div(html.H2("Impact Report"))),
                     dbc.Row(html.Div(html.P("Impact report")), className="ibody")], className="impact"), no_gutters=True, className="bottom")
             ])
-        ], lg=4, md=4, xs=12)
+        ], lg=4, md=12, xs=12)
     ], className="main"),
 
-
-
-
-
-    # Tall format
+    # Old versions: Tall format
     # dbc.Row([
     #         dbc.Col(html.Div(dbc.Alert("This will be the map", color="primary")), lg=12, md=12, xs=12)
     #     ], className="map"),
