@@ -1,0 +1,115 @@
+.banner {
+  height: 80px;
+  margin: 0px -10px 10px;
+  background-color: rgba(22, 63, 85, 1);
+  border-radius: 2px;
+}
+
+.banner h1{
+  color: rgba(252, 252, 252, 1);
+  font: "HelveticaNeue-Light";
+  font-weight: lighter;
+  /*text-align: right;*/
+  padding-top: 15px;
+  margin-left: 5%;
+  display: inline-block;
+}
+
+.banner Img{
+  position: relative;
+  float: right;
+  margin-right: 10%;
+  padding-top: 15px;
+  height: 70px;
+}
+
+.practice_col {
+  overflow-y:scroll;
+  height:400px;
+}
+
+.practice {
+  /*height: 240px;*/
+  background-clip: padding-box;
+  border: 5px solid transparent;
+  padding-left: 15px;
+  padding-right: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: rgba(245, 245, 245, 1);
+  border-radius: 12px;
+}
+
+.practice h2{
+    color: rgba(22, 63, 85, 0.8);
+    padding: 10px;
+    font-size: 20px;
+    font: "HelveticaNeue-light";
+    font-weight: 500;
+}
+
+.practice p{
+    color: rgba(22, 63, 85, 0.7);
+}
+
+.pbody {
+  background-color: rgba(250, 250, 250, 0.8);
+  padding: 10px;
+  margin-right: 0px;
+}
+
+.impact {
+  /*height: relative;*/
+  background-clip: padding-box;
+  border: 5px solid transparent;
+  padding-left: 2px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: white;
+  box-shadow: 0 0 50px rgba(150, 150, 150, 0.25);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 3px;
+  color:rgba(22, 63, 85, 1);
+}
+
+.impact h2{
+  color: rgba(22, 63, 85, 1);
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+  font: "HelveticaNeue-light";
+  font-weight: 500;
+}
+
+.impact p{
+  color: rgba(22, 63, 85, 1);
+  padding: 10px;
+  /*margin-left: 10px;
+  margin-right: 10px;*/
+  min-height: 300px;
+}
+
+.ibody {
+  /*background-color: rgba(245, 245, 245, 1);*/
+  /*padding: 10px;*/
+  margin-left: 0px;
+}
+
+.bottom {
+  position: sticky;
+  bottom: 0;
+}
+
+.main {
+  min-height: 100%;
+}
+
+.map {
+  min-height: 100%;
+  background-color: black;
+}
