@@ -36,28 +36,31 @@ body = html.Div([
                     dbc.Col([
                         html.Div(html.H1("PetHack Veterinary Group"), className="practice_name"),
                         dbc.Row(dbc.Container([
-                            dbc.Row(html.Div(html.H2("Hospital"))),
-                            # Add slider as dash core component
-                            dbc.Row(html.Div([
-                                html.Div(dcc.Slider(
+                            dbc.Row([
+                                dbc.Col(html.Div(html.H2("Hospital"))),
+                                dbc.Col(html.Div(dcc.Slider(
                                     min=0,
                                     max=1,
                                     value=1,
                                     marks={
-                                        0: {'label': 'Closed', 'style': {'color': 'rgba(100, 100, 100, 1)', "font-size": "16px"}},
-                                        1: {'label': 'Open', 'style': {'color': 'rgba(100, 100, 100, 1)', "font-size": "16px"}},
+                                        0: {'label': 'Closed', 'style': {'color': 'rgba(22, 63, 85, 0.7)'}},
+                                        1: {'label': 'Open', 'style': {'color': 'rgba(22, 63, 85, 0.7)'}},
                                     },
-                                    className="slider-opening"),
+                                    className="slider-opening"
+                                ),
                                     style={
                                     "width": "100 %",
                                     "display": "flex",
                                     "align-items": "center",
-                                    "justify-content": "center",
+                                    "justify-content": "right",
                                     "fontFamily": "sans-serif",
                                     "fontWeight": "500",
-                                    "paddingBottom": "40px"
+                                    "padding": "10px"
                                 }
-                                ),
+                                ))
+                            ]),
+                            # Add slider as dash core component
+                            dbc.Row(html.Div([
                                 html.P("Consulting Vets"),
                                 dcc.Slider(
                                     min=0,
@@ -117,27 +120,30 @@ body = html.Div([
                                 style={"width": "100 %", "display": "flex", "align-items": "center", "justify-content": "center"})],
                             className="practice"), no_gutters=True),
                         dbc.Row(dbc.Container([
-                            dbc.Row(html.Div(html.H2("Branch 1"))),
-                            dbc.Row(html.Div([
-                                html.Div(dcc.Slider(
+                            dbc.Row([
+                                dbc.Col(html.Div(html.H2("Branch 1"))),
+                                dbc.Col(html.Div(dcc.Slider(
                                     min=0,
                                     max=1,
                                     value=1,
                                     marks={
-                                        0: {'label': 'Closed', 'style': {'color': 'rgba(100, 100, 100, 1)', "font-size": "16px"}},
-                                        1: {'label': 'Open', 'style': {'color': 'rgba(100, 100, 100, 1)', "font-size": "16px"}},
+                                        0: {'label': 'Closed', 'style': {'color': 'rgba(22, 63, 85, 0.7)'}},
+                                        1: {'label': 'Open', 'style': {'color': 'rgba(22, 63, 85, 0.7)'}},
                                     },
-                                    className="slider-opening"),
+                                    className="slider-opening"
+                                ),
                                     style={
                                     "width": "100 %",
                                     "display": "flex",
                                     "align-items": "center",
-                                    "justify-content": "center",
+                                    "justify-content": "right",
                                     "fontFamily": "sans-serif",
                                     "fontWeight": "500",
-                                    "paddingBottom": "40px"
+                                    "padding": "10px"
                                 }
-                                ),
+                                ))
+                            ]),
+                            dbc.Row(html.Div([
                                 html.P("Consulting Vets"),
                                 dcc.Slider(
                                     min=0,
@@ -182,93 +188,31 @@ body = html.Div([
                                 style={"width": "100 %", "display": "flex", "align-items": "center", "justify-content": "center"})],
                             className="practice"), no_gutters=True),
                         dbc.Row(dbc.Container([
-                            dbc.Row(html.Div(html.H2("Branch 2"))),
-                            dbc.Row(html.Div([
-                                html.Div(dcc.Slider(
+                            dbc.Row([
+                                dbc.Col(html.Div(html.H2("Branch 2"))),
+                                dbc.Col(html.Div(dcc.Slider(
                                     min=0,
                                     max=1,
                                     value=1,
                                     marks={
-                                        0: {'label': 'Closed', 'style': {'color': 'rgba(100, 100, 100, 1)', "font-size": "16px"}},
-                                        1: {'label': 'Open', 'style': {'color': 'rgba(100, 100, 100, 1)', "font-size": "16px"}},
+                                        0: {'label': 'Closed', 'style': {'color': 'rgba(22, 63, 85, 0.7)'}},
+                                        1: {'label': 'Open', 'style': {'color': 'rgba(22, 63, 85, 0.7)'}},
                                     },
-                                    className="slider-opening"),
+                                    className="slider-opening"
+                                ),
                                     style={
                                     "width": "100 %",
                                     "display": "flex",
                                     "align-items": "center",
-                                    "justify-content": "center",
+                                    "justify-content": "right",
                                     "fontFamily": "sans-serif",
                                     "fontWeight": "500",
-                                    "paddingBottom": "40px"
+                                    "padding": "10px"
                                 }
-                                ),
-                                html.P("Consulting Vets"),
-                                dcc.Slider(
-                                    min=0,
-                                    max=2,
-                                    value=1,
-                                    marks={
-                                        0: {'label': '0', 'style': {'color': '#77b0b1'}},
-                                        1: {'label': '1'},
-                                        2: {'label': '2', 'style': {'color': '#f50'}}
-                                    },
-                                    className="slider"
-                                ),
-                                html.P("Procedure Vets"),
-                                dcc.Slider(
-                                    min=0,
-                                    max=2,
-                                    value=1,
-                                    marks={
-                                        0: {'label': '0', 'style': {'color': '#77b0b1'}},
-                                        1: {'label': '1'},
-                                        2: {'label': '2', 'style': {'color': '#f50'}}
-                                    },
-                                    className="slider"
-                                ),
-                                html.P("Nurses"),
-                                dcc.Slider(
-                                    min=0,
-                                    max=5,
-                                    value=3,
-                                    marks={
-                                        0: {'label': '0', 'style': {'color': '#77b0b1'}},
-                                        1: {'label': '1'},
-                                        2: {'label': '2'},
-                                        3: {'label': '3'},
-                                        4: {'label': '4', 'style': {'color': '#f50'}},
-                                        5: {'label': '5', 'style': {'color': '#f50'}}
-                                    },
-                                    className="slider"
-                                ),
+                                ))
                             ]),
-                                className="pbody",
-                                style={"width": "100 %", "display": "flex", "align-items": "center", "justify-content": "center"})],
-                            className="practice"), no_gutters=True),
-                        dbc.Row(dbc.Container([
-                                dbc.Row(html.Div(html.H2("Branch 3"))),
-                                dbc.Row(html.Div([
-                                    html.Div(dcc.Slider(
-                                        min=0,
-                                        max=1,
-                                        value=1,
-                                        marks={
-                                            0: {'label': 'Closed', 'style': {'color': 'rgba(100, 100, 100, 1)', "font-size": "16px"}},
-                                            1: {'label': 'Open', 'style': {'color': 'rgba(100, 100, 100, 1)', "font-size": "16px"}},
-                                        },
-                                        className="slider-opening"),
-                                        style={
-                                        "width": "100 %",
-                                        "display": "flex",
-                                        "align-items": "center",
-                                        "justify-content": "center",
-                                        "fontFamily": "sans-serif",
-                                        "fontWeight": "500",
-                                        "paddingBottom": "40px"
-                                    }
-                                    ),
-                                    html.P("Consulting Vets"),
+                            dbc.Row(html.Div([
+                                html.P("Consulting Vets"),
                                     dcc.Slider(
                                         min=0,
                                         max=2,
@@ -278,8 +222,76 @@ body = html.Div([
                                             1: {'label': '1'},
                                             2: {'label': '2', 'style': {'color': '#f50'}}
                                         },
-                                        className="slider")
-                                ]), className="pbody", style={"width": "100 %", "display": "flex", "align-items": "center", "justify-content": "center"})],
+                                        className="slider"
+                                ),
+                                html.P("Procedure Vets"),
+                                dcc.Slider(
+                                        min=0,
+                                        max=2,
+                                        value=1,
+                                        marks={
+                                            0: {'label': '0', 'style': {'color': '#77b0b1'}},
+                                            1: {'label': '1'},
+                                            2: {'label': '2', 'style': {'color': '#f50'}}
+                                        },
+                                        className="slider"
+                                ),
+                                html.P("Nurses"),
+                                dcc.Slider(
+                                    min=0,
+                                    max=5,
+                                    value=3,
+                                    marks={
+                                        0: {'label': '0', 'style': {'color': '#77b0b1'}},
+                                        1: {'label': '1'},
+                                        2: {'label': '2'},
+                                        3: {'label': '3'},
+                                        4: {'label': '4', 'style': {'color': '#f50'}},
+                                        5: {'label': '5', 'style': {'color': '#f50'}}
+                                    },
+                                    className="slider"
+                                ),
+                            ]),
+                                className="pbody",
+                                style={"width": "100 %", "display": "flex", "align-items": "center", "justify-content": "center"})],
+                            className="practice"), no_gutters=True),
+                        dbc.Row(dbc.Container([
+                            dbc.Row([
+                                dbc.Col(html.Div(html.H2("Hospital"))),
+                                dbc.Col(html.Div(dcc.Slider(
+                                    min=0,
+                                    max=1,
+                                    value=1,
+                                    marks={
+                                        0: {'label': 'Closed', 'style': {'color': 'rgba(22, 63, 85, 0.7)'}},
+                                        1: {'label': 'Open', 'style': {'color': 'rgba(22, 63, 85, 0.7)'}},
+                                    },
+                                    className="slider-opening"
+                                ),
+                                    style={
+                                    "width": "100 %",
+                                    "display": "flex",
+                                    "align-items": "center",
+                                    "justify-content": "right",
+                                    "fontFamily": "sans-serif",
+                                    "fontWeight": "500",
+                                    "padding": "10px"
+                                }
+                                ))
+                            ]),
+                            dbc.Row(html.Div([
+                                html.P("Consulting Vets"),
+                                dcc.Slider(
+                                    min=0,
+                                    max=2,
+                                    value=1,
+                                    marks={
+                                        0: {'label': '0', 'style': {'color': '#77b0b1'}},
+                                        1: {'label': '1'},
+                                        2: {'label': '2', 'style': {'color': '#f50'}}
+                                    },
+                                    className="slider")
+                            ]), className="pbody", style={"width": "100 %", "display": "flex", "align-items": "center", "justify-content": "center"})],
                             className="practice"), no_gutters=True),
                         dbc.Row(dbc.Container([
                             dbc.Row(html.Div(html.H2("Impact Report"))),
