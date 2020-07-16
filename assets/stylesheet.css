@@ -1,0 +1,219 @@
+.banner {
+  height: 80px;
+  margin: 0px -10px 10px;
+  background-color: rgba(22, 63, 85, 1);
+  border-radius: 2px;
+}
+
+.banner h1{
+  color: rgba(252, 252, 252, 1);
+  font: "HelveticaNeue-Light";
+  font-weight: lighter;
+  /*text-align: right;*/
+  padding-top: 15px;
+  margin-left: 5%;
+  display: inline-block;
+}
+
+.banner Img{
+  position: relative;
+  float: right;
+  margin-right: 10%;
+  padding-top: 15px;
+  height: 70px;
+}
+
+.main {
+  /*min-height: 100%;*/
+  height: 100vh; /* For 100% screen height */
+  width: 100vw; /* For 100% screen width */
+}
+
+.practice {
+  /*height: 240px;*/
+  background-clip: padding-box;
+  border: 5px solid transparent;
+  padding-left: 15px;
+  padding-right: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: rgba(245, 245, 245, 1);
+  border-radius: 12px;
+}
+
+.practice_name h1{
+    color: rgba(100, 100, 100, 1);
+    padding: 10px;
+    font-size: 30px;
+    font: "HelveticaNeue-Light";
+    font-weight: 200;
+}
+
+.practice h2{
+    color: rgba(22, 63, 85, 0.8);
+    padding: 10px;
+    font-size: 18px;
+    font: "HelveticaNeue-light";
+    font-weight: 500;
+}
+
+.practice p{
+    color: rgba(22, 63, 85, 0.7);
+}
+
+.pbody {
+  background-color: rgba(250, 250, 250, 0.8);
+  font-weight: 500;
+  font-size: 16px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-right: 0px;*/
+  /*width: 100%;*/
+}
+
+.slider {
+  width: 400px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.gauge {
+  color: rgba(22, 63, 85, 0.7);
+  font-weight: 500;
+  font-size: 18px;
+}
+
+#table {
+  width:175px;
+  padding-top:6px;
+}
+
+.data_table {
+  /*width: 10px;*/
+  align-items: center;
+  justify-content: center;
+}
+
+
+.impact {
+  /*height: relative;*/
+  background-clip: padding-box;
+  border: 5px solid transparent;
+  padding: 5px;
+  width:100%;
+  background-color: white;
+  box-shadow: 0 0 50px rgba(150, 150, 150, 0.25);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 12px;
+  color:rgba(22, 63, 85, 1);
+}
+
+.impact h2{
+  color: rgba(22, 63, 85, 1);
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+  font: "HelveticaNeue-light";
+  font-weight: 500;
+}
+
+.impact p{
+  color: rgba(22, 63, 85, 1);
+  padding: 10px;
+  /*margin-left: 10px;
+  margin-right: 10px;*/
+  height: 30%;
+}
+
+.ibody {
+  /*background-color: rgba(245, 245, 245, 1);*/
+  /*padding: 10px;*/
+  margin-left: 0px;
+}
+
+.map {
+  min-height: 100%;
+  padding-right: 0px;
+}
+
+@media only screen and (min-width:1201px){
+  .practice_col {
+    overflow-y:scroll;
+    height:750px;
+    padding-bottom: 20px;
+  }
+  .bottom {
+    position: sticky;
+    bottom: 0;
+  }
+  .impact {
+    height: 300px;
+    background-clip: padding-box;
+    border: 5px solid transparent;
+    padding-left: 2px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 0px;
+    background-color: white;
+    box-shadow: 0 0 50px rgba(150, 150, 150, 0.25);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 12px;
+    color:rgba(22, 63, 85, 1);
+  }
+  #map_html {
+    width: 100%;
+    height: 750px;
+  }
+}
+
+/*Remove sticky for small screens*/
+@media only screen and (max-width:1200px){
+  .practice_col {
+    padding-bottom: 20px;
+  }
+  .impact {
+    /*height: relative;*/
+    background-clip: padding-box;
+    border: 5px solid transparent;
+    padding-left: 2px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 10px;
+    margin-left: 45px;
+    margin-right: 45px;
+    background-color: white;
+    box-shadow: 0 0 50px rgba(150, 150, 150, 0.25);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    color:rgba(22, 63, 85, 1);
+  }
+  #map_html {
+    width: 100%;
+    height: 500px;
+  }
+  .map {
+    /*min-height: 100%;*/
+    justify-content: center;
+    margin-left: 20px;
+    padding-right: 50px;
+  }
+  .practice {
+    /*height: 240px;*/
+    background-clip: padding-box;
+    border: 5px solid transparent;
+    padding-left: 15px;
+    padding-right: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgba(245, 245, 245, 1);
+    border-radius: 12px;
+    width:90%;
+  }
+
+}
