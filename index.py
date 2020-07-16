@@ -134,7 +134,8 @@ body = html.Div([
                                         0: {'label': 'Closed', 'style': {'color': 'rgba(22, 63, 85, 0.7)'}},
                                         1: {'label': 'Open', 'style': {'color': 'rgba(22, 63, 85, 0.7)'}},
                                     },
-                                    className="slider-opening"
+                                    className="slider-opening",
+                                    id="branch1-open-slider"
                                 ),
                                     style={
                                     "width": "100 %",
@@ -158,7 +159,8 @@ body = html.Div([
                                         1: {'label': '1'},
                                         2: {'label': '2', 'style': {'color': '#f50'}}
                                     },
-                                    className="slider"
+                                    className="slider",
+                                    id="branch1-consult-slider"
                                 ),
                                 html.P("Procedure Vets"),
                                 dcc.Slider(
@@ -170,7 +172,8 @@ body = html.Div([
                                         1: {'label': '1'},
                                         2: {'label': '2', 'style': {'color': '#f50'}}
                                     },
-                                    className="slider"
+                                    className="slider",
+                                    id="branch1-procedure-slider"
                                 ),
                                 html.P("Nurses"),
                                 dcc.Slider(
@@ -185,7 +188,8 @@ body = html.Div([
                                         4: {'label': '4', 'style': {'color': '#f50'}},
                                         5: {'label': '5', 'style': {'color': '#f50'}}
                                     },
-                                    className="slider"
+                                    className="slider",
+                                    id="branch1-nurse-slider"
                                 ),
                             ]),
                                 className="pbody",
@@ -227,7 +231,8 @@ body = html.Div([
                                             1: {'label': '1'},
                                             2: {'label': '2', 'style': {'color': '#f50'}}
                                         },
-                                        className="slider"
+                                        className="slider",
+                                        id="branch2-consult-slider"
                                 ),
                                 html.P("Procedure Vets"),
                                 dcc.Slider(
@@ -239,7 +244,8 @@ body = html.Div([
                                             1: {'label': '1'},
                                             2: {'label': '2', 'style': {'color': '#f50'}}
                                         },
-                                        className="slider"
+                                        className="slider",
+                                        id="branch2-procedure-slider"
                                 ),
                                 html.P("Nurses"),
                                 dcc.Slider(
@@ -254,7 +260,8 @@ body = html.Div([
                                         4: {'label': '4', 'style': {'color': '#f50'}},
                                         5: {'label': '5', 'style': {'color': '#f50'}}
                                     },
-                                    className="slider"
+                                    className="slider",
+                                    id="branch2-nurse-slider"
                                 ),
                             ]),
                                 className="pbody",
@@ -271,7 +278,8 @@ body = html.Div([
                                         0: {'label': 'Closed', 'style': {'color': 'rgba(22, 63, 85, 0.7)'}},
                                         1: {'label': 'Open', 'style': {'color': 'rgba(22, 63, 85, 0.7)'}},
                                     },
-                                    className="slider-opening"
+                                    className="slider-opening",
+                                    id="branch3-open-slider"
                                 ),
                                     style={
                                     "width": "100 %",
@@ -295,7 +303,9 @@ body = html.Div([
                                         1: {'label': '1'},
                                         2: {'label': '2', 'style': {'color': '#f50'}}
                                     },
-                                    className="slider")
+                                    className="slider",
+                                    id="branch3-consult-slider"
+                                )
                             ]), className="pbody", style={"width": "100 %", "display": "flex", "align-items": "center", "justify-content": "center"})],
                             className="practice"), no_gutters=True),
                         dbc.Row(dbc.Container([
@@ -393,6 +403,90 @@ def update_slider(selection):
         value = 12
     return value
 
+# Branch 1
+
+
+@app.callback(
+    Output("branch1-consult-slider", "value"),
+    [Input("branch1-open-slider", "value")])
+def update_slider(selection):
+    if selection == 0:
+        value = 0
+    else:
+        value = 1
+    return value
+
+
+@app.callback(
+    Output("branch1-procedure-slider", "value"),
+    [Input("branch1-open-slider", "value")])
+def update_slider(selection):
+    if selection == 0:
+        value = 0
+    else:
+        value = 1
+    return value
+
+
+@app.callback(
+    Output("branch1-nurse-slider", "value"),
+    [Input("branch1-open-slider", "value")])
+def update_slider(selection):
+    if selection == 0:
+        value = 0
+    else:
+        value = 3
+    return value
+
+# Branch 2
+
+
+@app.callback(
+    Output("branch2-consult-slider", "value"),
+    [Input("branch2-open-slider", "value")])
+def update_slider(selection):
+    if selection == 0:
+        value = 0
+    else:
+        value = 1
+    return value
+
+
+@app.callback(
+    Output("branch2-procedure-slider", "value"),
+    [Input("branch2-open-slider", "value")])
+def update_slider(selection):
+    if selection == 0:
+        value = 0
+    else:
+        value = 1
+    return value
+
+
+@app.callback(
+    Output("branch2-nurse-slider", "value"),
+    [Input("branch2-open-slider", "value")])
+def update_slider(selection):
+    if selection == 0:
+        value = 0
+    else:
+        value = 3
+    return value
+
+# Branch 3
+
+
+@app.callback(
+    Output("branch3-consult-slider", "value"),
+    [Input("branch3-open-slider", "value")])
+def update_slider(selection):
+    if selection == 0:
+        value = 0
+    else:
+        value = 1
+    return value
+
+
 # @app.callback(Output(component_id='graph-output', component_property='children'),
 #               [Input(component_id='graph-input', component_property='')])
 # def render_graph(_):
@@ -432,7 +526,6 @@ def update_slider(selection):
 #         }
 #     )
 #
-
 
 # The app refreshes when you make changes to your code
 if __name__ == '__main__':
