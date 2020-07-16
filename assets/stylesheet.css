@@ -39,6 +39,7 @@
   padding-bottom: 5px;
   background-color: rgba(245, 245, 245, 1);
   border-radius: 12px;
+  margin-bottom: 20px;
 }
 
 .practice_name h1{
@@ -75,6 +76,34 @@
   width: 400px;
   font-weight: 500;
   font-size: 18px;
+}
+
+.slider-opening {
+  width: 150px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.slider-opening .rc-slider-track {
+  background-color: rgba(22, 63, 85, 1);
+}
+
+.slider-opening .rc-slider-dot-active {
+  border-color: rgba(22, 63, 85, 0.7);
+  border: solid 2px rgba(22, 63, 85, 1);
+}
+
+.slider-opening .rc-slider-handle {
+  /*background-color: rgba(22, 63, 85, 0.7);*/
+  border-color: rgba(22, 63, 85, 1);
+}
+
+.slider-opening .rc.slider-handle:hover {
+  border-color: rgba(22, 63, 85, 1);
+}
+
+.slider-opening .rc.slider-handle-active:active {
+  border-color: rgba(22, 63, 85, 1);
 }
 
 .gauge {
