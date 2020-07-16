@@ -23,6 +23,12 @@
   height: 70px;
 }
 
+.main {
+  /*min-height: 100%;*/
+  height: 100vh; /* For 100% screen height */
+  width: 100vw; /* For 100% screen width */
+}
+
 .practice {
   /*height: 240px;*/
   background-clip: padding-box;
@@ -35,10 +41,18 @@
   border-radius: 12px;
 }
 
+.practice_name h1{
+    color: rgba(100, 100, 100, 1);
+    padding: 10px;
+    font-size: 30px;
+    font: "HelveticaNeue-Light";
+    font-weight: 200;
+}
+
 .practice h2{
     color: rgba(22, 63, 85, 0.8);
     padding: 10px;
-    font-size: 20px;
+    font-size: 18px;
     font: "HelveticaNeue-light";
     font-weight: 500;
 }
@@ -49,23 +63,48 @@
 
 .pbody {
   background-color: rgba(250, 250, 250, 0.8);
-  padding: 10px;
-  margin-right: 0px;
+  font-weight: 500;
+  font-size: 16px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-right: 0px;*/
+  /*width: 100%;*/
 }
+
+.slider {
+  width: 400px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.gauge {
+  color: rgba(22, 63, 85, 0.7);
+  font-weight: 500;
+  font-size: 18px;
+}
+
+#table {
+  width:175px;
+  padding-top:10px;
+}
+
+.data_table {
+  /*width: 10px;*/
+  align-items: center;
+  justify-content: center;
+}
+
 
 .impact {
   /*height: relative;*/
   background-clip: padding-box;
   border: 5px solid transparent;
-  padding-left: 2px;
-  padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin-bottom: 0px;
+  padding: 5px;
+  width:100%;
   background-color: white;
   box-shadow: 0 0 50px rgba(150, 150, 150, 0.25);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 3px;
+  border-radius: 12px;
   color:rgba(22, 63, 85, 1);
 }
 
@@ -87,7 +126,7 @@
   padding: 10px;
   /*margin-left: 10px;
   margin-right: 10px;*/
-  min-height: 300px;
+  height: 30%;
 }
 
 .ibody {
@@ -96,19 +135,15 @@
   margin-left: 0px;
 }
 
-.main {
-  min-height: 100%;
-}
-
 .map {
-  /*min-height: 100%;*/
+  min-height: 100%;
   padding-right: 0px;
 }
 
 @media only screen and (min-width:1201px){
   .practice_col {
     overflow-y:scroll;
-    height:400px;
+    height:750px;
     padding-bottom: 20px;
   }
   .bottom {
@@ -116,7 +151,7 @@
     bottom: 0;
   }
   .impact {
-    /*height: relative;*/
+    height: 300px;
     background-clip: padding-box;
     border: 5px solid transparent;
     padding-left: 2px;
@@ -127,12 +162,12 @@
     background-color: white;
     box-shadow: 0 0 50px rgba(150, 150, 150, 0.25);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 3px;
+    border-radius: 12px;
     color:rgba(22, 63, 85, 1);
   }
   #map_html {
     width: 100%;
-    height: 780px;
+    height: 750px;
   }
 }
 
