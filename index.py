@@ -12,6 +12,12 @@ import dash_bootstrap_components as dbc  # See app.py for how to install boostra
 from dash.dependencies import Input, Output
 import dash_daq as daq
 
+
+dat = pd.read_csv("./assets/example_practice_data.txt", sep='\t')
+df = dat[["Excess Vets", "Excess Nurses"]]
+df = df.rename(columns={"Excess Vets": "Vets", "Excess Nurses": "Nurses"})
+
+
 # The layout of the dashboard
 # Comprised of a tree of components that describe what the application looks like
 # Layout coded using boostrap for responsive design
@@ -216,12 +222,14 @@ body = html.Div([
                                         min=0,
                                         className="gauge"), style={"justify-content": "center"}
                                     )]),
-                                dbc.Col(dbc.Row(dash_table.DataTable(
+                                dbc.Col([
+                                    dbc.Row(html.P("Excess Staff"),
+                                            style={"justify-content": "center", "padding-top": "10px"}),
+                                dbc.Row(dash_table.DataTable(
                                         id='table',
-                                        columns=[
-                                            {'name': 'Excess Vets', 'id': 'column1'},
-                                            {'name': 'N', 'id': 'column2'}],
-                                        style_cell={
+                                        columns=[{"name": i, "id": i} for i in df.columns],
+                                        data=df.to_dict("rows"),
+                                            'width': '88px'.format(len(df.columns)),
                                             'textAlign': 'left',
                                             'padding': '5px',
                                             "fontWeight": "500",
@@ -231,7 +239,7 @@ body = html.Div([
                                             'color': "rgba(22, 63, 85, 0.7)",
                                             "borderStyle": "none",
                                         },
-                                        ), className="data_table")),
+                                        ), className="data_table")]),
                             ], className="pbody")], className="practice"), no_gutters=True)
                     ]), className="practice_col"),
                 #     dbc.Row(dbc.Col([
@@ -303,10 +311,6 @@ app.css.append_css({
 
 # The interactive component of the dashboard
 # Automatically called when an input property changes
-
-# Read in dataframe
-
-dat = pd.read_csv("./assets/example_practice_data.txt", sep='\t')
 
 
 # @app.callback(Output(component_id='graph-output', component_property='children'),
