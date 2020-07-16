@@ -28,7 +28,7 @@ body = html.Div([
             html.Div([
                 dbc.Row(
                     dbc.Col([
-                        html.Div(html.H1("Example Veterinary Group"), className="practice_name"),
+                        html.Div(html.H1("PetHack Veterinary Group"), className="practice_name"),
                         dbc.Row(dbc.Container([
                             dbc.Row(html.Div(html.H2("Hospital"))),
                             # Add slider as dash core component
