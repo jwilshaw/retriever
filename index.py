@@ -4,6 +4,7 @@
 from app import app
 from app import server
 import pandas as pd
+import math
 import dash
 import dash_table
 import dash_html_components as html
@@ -81,14 +82,15 @@ body = html.Div([
                                 html.P("Procedure Vets"),
                                 dcc.Slider(
                                     min=0,
-                                    max=4,
-                                    value=3,
+                                    max=5,
+                                    value=4,
                                     marks={
                                         0: {'label': '0', 'style': {'color': '#77b0b1'}},
                                         1: {'label': '1'},
                                         2: {'label': '2'},
                                         3: {'label': '3'},
-                                        4: {'label': '4', 'style': {'color': '#f50'}}
+                                        4: {'label': '4'},
+                                        5: {'label': '5', 'style': {'color': '#f50'}}
                                     },
                                     className="slider",
                                     id="hospital-procedure-slider"
@@ -119,6 +121,7 @@ body = html.Div([
                                     className="slider",
                                     id="hospital-nurse-slider"
                                 ),
+                                html.Div(id="hospital-nurse-warning", className="nurse-warning")
                             ]),
                                 className="pbody",
                                 style={"width": "100 %", "display": "flex", "align-items": "center", "justify-content": "center"})],
@@ -191,6 +194,7 @@ body = html.Div([
                                     className="slider",
                                     id="branch1-nurse-slider"
                                 ),
+                                html.Div(id="branch1-nurse-warning", className="nurse-warning")
                             ]),
                                 className="pbody",
                                 style={"width": "100 %", "display": "flex", "align-items": "center", "justify-content": "center"})],
@@ -263,6 +267,7 @@ body = html.Div([
                                     className="slider",
                                     id="branch2-nurse-slider"
                                 ),
+                                html.Div(id="branch2-nurse-warning", className="nurse-warning")
                             ]),
                                 className="pbody",
                                 style={"width": "100 %", "display": "flex", "align-items": "center", "justify-content": "center"})],
@@ -387,7 +392,7 @@ def update_slider(selection):
     if selection == 0:
         value = 0
     else:
-        value = 3
+        value = 4
     return value
 
 # Hospital nurses
@@ -402,6 +407,22 @@ def update_slider(selection):
     else:
         value = 12
     return value
+
+# Hospital nurse warning
+
+
+@app.callback(
+    Output("hospital-nurse-warning", "children"),
+    [Input("hospital-nurse-slider", "value"),
+     Input("hospital-procedure-slider", "value"),
+     Input("hospital-consult-slider", "value")])
+def update_output_div(selection1, selection2, selection3):
+    vets = selection2 + selection3
+    nurses = selection1
+    if nurses < (math.ceil(1*vets)):
+        return 'You may not have enough nurses at this practice'
+    if nurses > (math.ceil(2*vets)):
+        return 'You may have too many nurses at this practice'
 
 # Branch 1
 
@@ -438,6 +459,22 @@ def update_slider(selection):
         value = 3
     return value
 
+# Branch1 nurse warning
+
+
+@app.callback(
+    Output("branch1-nurse-warning", "children"),
+    [Input("branch1-nurse-slider", "value"),
+     Input("branch1-procedure-slider", "value"),
+     Input("branch1-consult-slider", "value")])
+def update_output_div(selection1, selection2, selection3):
+    vets = selection2 + selection3
+    nurses = selection1
+    if nurses < (math.ceil(1*vets)):
+        return 'You may not have enough nurses at this practice'
+    if nurses > (math.ceil(2*vets)):
+        return 'You may have too many nurses at this practice'
+
 # Branch 2
 
 
@@ -472,6 +509,22 @@ def update_slider(selection):
     else:
         value = 3
     return value
+
+# Branch2 nurse warning
+
+
+@app.callback(
+    Output("branch2-nurse-warning", "children"),
+    [Input("branch2-nurse-slider", "value"),
+     Input("branch2-procedure-slider", "value"),
+     Input("branch2-consult-slider", "value")])
+def update_output_div(selection1, selection2, selection3):
+    vets = selection2 + selection3
+    nurses = selection1
+    if nurses < (math.ceil(1*vets)):
+        return 'You may not have enough nurses at this practice'
+    if nurses > (math.ceil(2*vets)):
+        return 'You may have too many nurses at this practice'
 
 # Branch 3
 

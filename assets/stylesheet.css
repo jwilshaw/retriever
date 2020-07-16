@@ -106,6 +106,15 @@
   border-color: rgba(22, 63, 85, 1);
 }
 
+.nurse-warning {
+  /*color: #e53d00;*/
+  color: rgba(22, 63, 85, 0.7);
+  font-weight: 300;
+  font-size: 15px;
+  padding-top: 10px;
+  text-align: center;
+}
+
 .gauge {
   color: rgba(22, 63, 85, 0.7);
   font-weight: 500;
