@@ -46,7 +46,8 @@ body = html.Div([
                                         0: {'label': 'Closed', 'style': {'color': 'rgba(22, 63, 85, 0.7)'}},
                                         1: {'label': 'Open', 'style': {'color': 'rgba(22, 63, 85, 0.7)'}},
                                     },
-                                    className="slider-opening"
+                                    className="slider-opening",
+                                    id="hospital-open-slider"
                                 ),
                                     style={
                                     "width": "100 %",
@@ -75,6 +76,7 @@ body = html.Div([
                                         5: {'label': '5', 'style': {'color': '#f50'}}
                                     },
                                     className="slider",
+                                    id="hospital-consult-slider"
                                 ),
                                 html.P("Procedure Vets"),
                                 dcc.Slider(
@@ -88,7 +90,8 @@ body = html.Div([
                                         3: {'label': '3'},
                                         4: {'label': '4', 'style': {'color': '#f50'}}
                                     },
-                                    className="slider"
+                                    className="slider",
+                                    id="hospital-procedure-slider"
                                 ),
                                 html.P("Nurses"),
                                 dcc.Slider(
@@ -113,7 +116,8 @@ body = html.Div([
                                         14: {'label': '14', 'style': {'color': '#f50'}},
                                         15: {'label': '15', 'style': {'color': '#f50'}},
                                     },
-                                    className="slider"
+                                    className="slider",
+                                    id="hospital-nurse-slider"
                                 ),
                             ]),
                                 className="pbody",
@@ -198,7 +202,8 @@ body = html.Div([
                                         0: {'label': 'Closed', 'style': {'color': 'rgba(22, 63, 85, 0.7)'}},
                                         1: {'label': 'Open', 'style': {'color': 'rgba(22, 63, 85, 0.7)'}},
                                     },
-                                    className="slider-opening"
+                                    className="slider-opening",
+                                    id="branch2-open-slider"
                                 ),
                                     style={
                                     "width": "100 %",
@@ -349,6 +354,44 @@ app.css.append_css({
 # The interactive component of the dashboard
 # Automatically called when an input property changes
 
+# Hospital consulting vets
+
+
+@app.callback(
+    Output("hospital-consult-slider", "value"),
+    [Input("hospital-open-slider", "value")])
+def update_slider(selection):
+    if selection == 0:
+        value = 0
+    else:
+        value = 4
+    return value
+
+# Hospital procedure vets
+
+
+@app.callback(
+    Output("hospital-procedure-slider", "value"),
+    [Input("hospital-open-slider", "value")])
+def update_slider(selection):
+    if selection == 0:
+        value = 0
+    else:
+        value = 3
+    return value
+
+# Hospital nurses
+
+
+@app.callback(
+    Output("hospital-nurse-slider", "value"),
+    [Input("hospital-open-slider", "value")])
+def update_slider(selection):
+    if selection == 0:
+        value = 0
+    else:
+        value = 12
+    return value
 
 # @app.callback(Output(component_id='graph-output', component_property='children'),
 #               [Input(component_id='graph-input', component_property='')])
@@ -389,6 +432,7 @@ app.css.append_css({
 #         }
 #     )
 #
+
 
 # The app refreshes when you make changes to your code
 if __name__ == '__main__':
