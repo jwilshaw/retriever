@@ -121,6 +121,28 @@
   font-size: 18px;
 }
 
+.excess-number {
+  color: skyblue;
+  font-weight: 600;
+  font-size: 50px;
+}
+
+.excess-box {
+  background-clip: padding-box;
+  border: 5px solid transparent;
+  background-color: white;
+  border-radius: 12px;
+  width: 100%;
+}
+
+.gauge-box {
+  background-clip: padding-box;
+  border: 5px solid transparent;
+  background-color: white;
+  border-radius: 12px;
+  width: 100%;
+}
+
 #table {
   width:176px;
   padding-top:6px;

@@ -15,8 +15,16 @@ import dash_daq as daq
 
 
 dat = pd.read_csv("./assets/example_practice_data.txt", sep='\t')
-df = dat[["Excess Vets", "Excess Nurses"]]
-df = df.rename(columns={"Excess Vets": "Vets", "Excess Nurses": "Nurses"})
+
+df = dat[["Routine Vets", "Routine Nurses"]]
+routine_vets = df['Routine Vets'].sum()
+
+df_vets = dat[["Routine Vets"]]
+df_nurses = dat[["Routine Nurses"]]
+routine_vets = df['Routine Vets'].sum()
+routine_nurses = df['Routine Nurses'].sum()
+
+# df = df.rename(columns={"Excess Vets":"Vets", "Excess Nurses": "Nurses"})
 
 
 # The layout of the dashboard
@@ -274,7 +282,7 @@ body = html.Div([
                             className="practice"), no_gutters=True),
                         dbc.Row(dbc.Container([
                             dbc.Row([
-                                dbc.Col(html.Div(html.H2("Hospital"))),
+                                dbc.Col(html.Div(html.H2("Branch 3"))),
                                 dbc.Col(html.Div(dcc.Slider(
                                     min=0,
                                     max=1,
@@ -316,39 +324,36 @@ body = html.Div([
                         dbc.Row(dbc.Container([
                             dbc.Row(html.Div(html.H2("Impact Report"))),
                             dbc.Row([
-                                dbc.Col([
+                                dbc.Col(dbc.Container([
                                     dbc.Row(html.P("% of Routine Caseload"),
-                                            style={"justify-content": "center", "padding-top": "10px"}),
+                                            style={"justify-content": "center",
+                                                   "padding-top": "10px"},
+                                            no_gutters=True),
                                     dbc.Row(daq.Gauge(
                                         color={"gradient": True, "ranges": {
-                                            "red": [0, 20],
-                                            "yellow":[20, 50],
-                                            "green":[50, 100]
+                                            "#f40": [0, 20],
+                                            # "yellow":[20, 50],
+                                            "skyblue":[20, 100]
                                         }},
                                         value=100,
                                         max=100,
                                         min=0,
-                                        className="gauge"), style={"justify-content": "center"}
-                                    )]),
+                                        className="gauge", id="gauge_indicator"), style={"justify-content": "center"}, no_gutters=True,
+                                    )], className="gauge-box"), lg=7, md=7, xs=12),
                                 dbc.Col([
-                                    dbc.Row(html.P("Excess Staff"),
-                                            style={"justify-content": "center", "padding-top": "10px"}),
-                                    dbc.Row(dash_table.DataTable(
-                                        id='table',
-                                        columns=[{"name": i, "id": i} for i in df.columns],
-                                        data=df.to_dict("rows"),
-                                        style_cell={
-                                            'width': '88px'.format(len(df.columns)),
-                                            'textAlign': 'left',
-                                            'padding': '5px',
-                                            "fontWeight": "500",
-                                            "fontSize": "16px",
-                                            "font-family": "sans-serif",
-                                            'backgroundColor': 'rgba(250, 250, 250, 0.8)',
-                                            'color': "rgba(22, 63, 85, 0.7)",
-                                            "borderStyle": "none",
-                                        },
-                                    ), className="data_table")]),
+                                    dbc.Container([
+                                        dbc.Row(html.Div(id="excess-vets", className="excess-number"),
+                                                style={"justify-content": "center", "padding-top": "10px"}, no_gutters=True),
+                                        dbc.Row(html.P("Excess Vets"),
+                                                style={"justify-content": "center"}, no_gutters=True),
+                                    ], className="excess-box"),
+                                    dbc.Container([
+                                        dbc.Row(html.Div(id="excess-nurses", className="excess-number"),
+                                                style={"justify-content": "center", "padding-top": "10px"}, no_gutters=True),
+                                        dbc.Row(html.P("Excess Nurses"),
+                                                style={"justify-content": "center"}, no_gutters=True),
+                                    ], className="excess-box", style={"margin-top": "20px"}),
+                                ], lg=5, md=5, xs=12),
                             ], className="pbody")], className="practice"), no_gutters=True)
                     ]), className="practice_col"),
                 #     dbc.Row(dbc.Col([
@@ -539,46 +544,89 @@ def update_slider(selection):
         value = 1
     return value
 
+# Table
 
-# @app.callback(Output(component_id='graph-output', component_property='children'),
-#               [Input(component_id='graph-input', component_property='')])
-# def render_graph(_):
-#     return dcc.Graph(
-#         id='graph-1',
-#         figure={
-#             'data': [
-#                 {'x': [1, 2, 3, 4, 5, 6, 7], 'y': [10, 20, 30, 40,
-#                                                    50, 60, 70], 'type': 'line', 'name': 'value1'},
-#                 {'x': [1, 2, 3, 4, 5, 6, 7], 'y': [12, 22, 36, 44,
-#                                                    49, 58, 73], 'type': 'line', 'name': 'value2'}
-#             ],
-#             'layout': {
-#                 'title': 'Simple Line Graph',
-#                 'plot_bgcolor': colors['background'],
-#                 'paper_bgcolor': colors['background'],
-#                 'font': {
-#                     'color': colors['text'],
-#                     'size': 18
-#                 },
-#                 'xaxis': {
-#                     'title': 'Variable name -1',
-#                     'showspikes': True,
-#                     'spikedash': 'dot',
-#                     'spikemode': 'across',
-#                     'spikesnap': 'cursor',
-#                 },
-#                 'yaxis': {
-#                     'title': 'Variable name -2',
-#                     'showspikes': True,
-#                     'spikedash': 'dot',
-#                     'spikemode': 'across',
-#                     'spikesnap': 'cursor'
-#                 },
-#
-#             }
-#         }
-#     )
-#
+
+@app.callback(
+    Output("excess-vets", "children"),
+    [
+        Input("hospital-procedure-slider", "value"),
+        Input("hospital-consult-slider", "value"),
+        Input("branch1-procedure-slider", "value"),
+        Input("branch1-consult-slider", "value"),
+        Input("branch2-procedure-slider", "value"),
+        Input("branch2-consult-slider", "value"),
+        Input("branch3-consult-slider", "value")
+    ])
+def update_output_div(
+    sel1,
+    sel2,
+    sel3,
+    sel4,
+    sel5,
+    sel6,
+    sel7
+):
+    vets = sel1+sel2+sel3+sel4+sel5+sel6+sel7
+    cases = (routine_vets-vets)
+    if cases > 0:
+        children = cases
+    if cases <= 0:
+        children = 0
+    return children
+
+
+@app.callback(
+    Output("excess-nurses", "children"),
+    [
+        Input("hospital-nurse-slider", "value"),
+        Input("branch1-nurse-slider", "value"),
+        Input("branch2-nurse-slider", "value")
+    ])
+def update_output_div(
+    sel1,
+    sel2,
+    sel3,
+):
+    nurses = sel1+sel2+sel3
+    cases = (routine_nurses-nurses)
+    if cases > 0:
+        children = cases
+    if cases <= 0:
+        children = 0
+    return children
+
+# Gauge
+
+
+@app.callback(
+    Output("gauge_indicator", "value"),
+    [
+        Input("hospital-procedure-slider", "value"),
+        Input("hospital-consult-slider", "value"),
+        Input("branch1-procedure-slider", "value"),
+        Input("branch1-consult-slider", "value"),
+        Input("branch2-procedure-slider", "value"),
+        Input("branch2-consult-slider", "value"),
+        Input("branch3-consult-slider", "value")
+    ])
+def update_output_div(
+    sel1,
+    sel2,
+    sel3,
+    sel4,
+    sel5,
+    sel6,
+    sel7
+):
+    vets = sel1+sel2+sel3+sel4+sel5+sel6+sel7
+    cases = ((vets/routine_vets)*100)
+    if cases <= 100:
+        value = cases
+    if cases > 100:
+        value = 100
+    return value
+
 
 # The app refreshes when you make changes to your code
 if __name__ == '__main__':
