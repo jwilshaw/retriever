@@ -37,7 +37,7 @@ body = html.Div([
         dbc.Col(html.Div(html.Img(src="/assets/logo.png")), lg=2, md=2, xs=2)
     ], className="banner"),
     dbc.Row([
-        dbc.Col(html.Div(html.Iframe(id="map_html", srcDoc=open("./assets/tester_manchester.html", 'r').read())),
+        dbc.Col(html.Div(html.Iframe(id="map_html", srcDoc=open("./assets/manchester_singleFile.html", 'r').read())),
                 lg=8, md=12, xs=12, className="map"),
         dbc.Col([
             html.Div([
