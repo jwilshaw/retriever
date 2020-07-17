@@ -354,6 +354,8 @@ body = html.Div([
                                                 style={"justify-content": "center"}, no_gutters=True),
                                     ], className="excess-box", style={"margin-top": "20px"}),
                                 ], lg=5, md=5, xs=12),
+                                dbc.Row(dbc.Container(html.P(id="warning_impact"), className="excess-box", style={
+                                        "justify-content": "center", "margin-left": "30px", 'margin-top': "20px"}))
                             ], className="pbody")], className="practice"), no_gutters=True)
                     ]), className="practice_col"),
                 #     dbc.Row(dbc.Col([
@@ -626,6 +628,16 @@ def update_output_div(
     if cases > 100:
         value = 100
     return value
+
+# Branch 1 turning off warning
+
+
+@app.callback(
+    Output("warning_impact", "children"),
+    [Input("branch1-open-slider", "value")])
+def update_slider(selection):
+    if selection == 0:
+        return "🛑 Branch 1 closure may exclude the following demographic: High Deprivation"
 
 
 # The app refreshes when you make changes to your code

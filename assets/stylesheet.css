@@ -115,6 +115,10 @@
   text-align: center;
 }
 
+#warning_impact{
+  padding-top:10px;
+}
+
 .gauge {
   color: rgba(22, 63, 85, 0.7);
   font-weight: 500;
